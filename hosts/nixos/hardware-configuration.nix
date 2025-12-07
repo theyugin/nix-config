@@ -6,11 +6,11 @@
 }:
 
 let
-  EFI_PART_UUID = "BA4D-3A55";
-  LUKS_PART_UUID = "644ae2e0-eec7-4081-9bdc-36ce78d54345";
-  LUKS_KEY_UUID = "asdf";
-  ROOT_LVM_PART_UUID = "ae9f98b6-5cd7-4df0-8e17-4934e851cd4a";
-  SWAP_LVM_PART_UUID = "ab6df6fb-56ad-4db6-a326-fe20ac88c6a8";
+  EFI_PART_LABEL = "PCEFI";
+  LUKS_PART_LABEL = "PCNIXOS";
+  LUKS_KEY_LABEL = "CRYPTKEY";
+  ROOT_LVM_PART_LABEL = "PCNIXOSROOT";
+  SWAP_LVM_PART_LABEL = "PCNIXOSSWAP";
 in
 {
   imports = [
@@ -34,8 +34,8 @@ in
 
       systemd.enable = true;
       luks.devices."crypted" = {
-        device = "/dev/disk/by-uuid/${LUKS_PART_UUID}";
-        keyFile = "/dev/disk/by-uuid/${LUKS_KEY_UUID}";
+        device = "/dev/disk/by-label/${LUKS_PART_LABEL}";
+        keyFile = "/dev/disk/by-label/${LUKS_KEY_LABEL}";
         keyFileTimeout = 5;
       };
     };
@@ -45,12 +45,12 @@ in
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/${ROOT_LVM_PART_UUID}";
+    device = "/dev/disk/by-label/${ROOT_LVM_PART_LABEL}";
     fsType = "xfs";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/${EFI_PART_UUID}";
+    device = "/dev/disk/by-label/${EFI_PART_LABEL}";
     fsType = "vfat";
     options = [
       "fmask=0022"
@@ -59,7 +59,7 @@ in
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/${SWAP_LVM_PART_UUID}"; }
+    { device = "/dev/disk/by-label/${SWAP_LVM_PART_LABEL}"; }
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
