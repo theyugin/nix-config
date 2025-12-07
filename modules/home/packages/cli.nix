@@ -9,8 +9,6 @@
     tree
     fd
     ripgrep
-    fzf
-    bat
-    eza
+    htop
   ];
 }

@@ -8,7 +8,6 @@
     xarchiver
     hyprshot
     swaybg
-    walker
     wl-clipboard
   ];
 }

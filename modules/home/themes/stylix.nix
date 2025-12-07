@@ -4,12 +4,15 @@
     enable = true;
     polarity = "dark";
 
-    targets.gtk.enable = true;
-    targets.gtk.flatpakSupport.enable = true;
+    targets = {
+      gtk.enable = true;
+      gtk.flatpakSupport.enable = true;
+      firefox.enable = true;
+    };
 
     cursor = {
       package = pkgs.bibata-cursors;
-      name = "Bibata-Original-Classic";
+      name = "Bibata-Modern-Classic";
       size = 24;
     };
 

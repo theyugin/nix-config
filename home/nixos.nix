@@ -8,6 +8,9 @@
 
     ../modules/home/programs/hyprland.nix
     ../modules/home/programs/foot.nix
+    ../modules/home/programs/mako.nix
+    ../modules/home/programs/walker.nix
+    ../modules/home/programs/firefox.nix
     
     ../modules/home/themes/stylix.nix
   ];
