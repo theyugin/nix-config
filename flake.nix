@@ -30,6 +30,10 @@
     }:
     let
       system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in
     {
       nixosConfigurations = {
@@ -64,6 +68,24 @@
               home-manager.users.yugin = import ./home/wsl.nix;
             }
           ];
+        };
+      };
+      devShells = {
+        "${system}" = {
+          default = pkgs.mkShell {
+            packages = with pkgs; [
+              nixpkgs-fmt
+              nixd
+              just
+              direnv
+              (vscode-with-extensions.override {
+                vscodeExtensions = with vscode-extensions; [
+                  jnoortheen.nix-ide
+                  mkhl.direnv
+                ];
+              })
+            ];
+          };
         };
       };
     };
