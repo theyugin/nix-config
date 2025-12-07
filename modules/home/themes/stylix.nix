@@ -23,16 +23,16 @@
         popups = 12;
       };
     };
-  };
-  gtk = {
-    enable = true;
-    iconTheme = {
+    icons = {
+      enable = true;
+      dark = "Gruvbox-Plus-Dark";
+      light = "Gruvbox-Plus-Light";
       package = (
         pkgs.gruvbox-plus-icons.override {
           folder-color = "green";
         }
       );
-      name = "Gruvbox-Plus-Dark";
     };
   };
+  gtk.enable = true;
 }
