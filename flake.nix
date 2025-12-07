@@ -37,7 +37,7 @@
     in
     {
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+        pc = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             stylix.nixosModules.stylix
