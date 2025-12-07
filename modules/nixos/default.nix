@@ -29,6 +29,7 @@
 
   services = {
     xserver.enable = true;
+    displayManager.sddm.enable = true;
     printing.enable = true;
     udisks2.enable = true;
     gvfs.enable = true;
