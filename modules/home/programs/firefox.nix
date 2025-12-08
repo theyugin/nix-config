@@ -6,6 +6,30 @@
       default = { };
     };
     policies = {
+      DisableFirefoxStudies = true;
+      DisableFirefoxAccounts = true;
+      DisableFirefoxScreenshots = true;
+      DisableForgetButton = true;
+      DisableMasterPasswordCreation = true;
+      DisableProfileImport = true;
+      DisableProfileRefresh = true;
+      DisableSetDesktopBackground = true;
+      DisablePocket = true;
+      DisableTelemetry = true;
+      DisableFormHistory = true;
+
+      DisplayMenuBar = false;
+      DontCheckDefaultBrowser = true;
+      OfferToSaveLogins = false;
+
+      GenerativeAI = {
+        Enabled = false;
+        Chatbot = false;
+        LinkPreviews = false;
+        TabGroups = false;
+        Locked = true;
+      };
+
       ExtensionSettings =
         with builtins;
         let
