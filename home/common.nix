@@ -1,25 +1,33 @@
-{ ... }:
+{ config, lib, ... }:
 {
+  options.userConfig = {
+    userName = lib.mkOption {
+      type = lib.types.str;
+      description = "The username of the user.";
+    };
+    homeDirectory = lib.mkOption {
+      type = lib.types.str;
+      description = "The home directory of the user.";
+    };
+    gitUserName = lib.mkOption {
+      type = lib.types.str;
+      description = "The git user name.";
+    };
+    gitUserEmail = lib.mkOption {
+      type = lib.types.str;
+      description = "The git user email.";
+    };
+  };
+
+  config = {
+    home = {
+      username = config.userConfig.userName;
+      homeDirectory = config.userConfig.homeDirectory;
+      stateVersion = "25.11";
+    };
+  };
+
   imports = [
-    ../modules/home/programs/git.nix
-    ../modules/home/programs/zsh.nix
-    ../modules/home/programs/neovim.nix
-    ../modules/home/programs/bat.nix
-    ../modules/home/programs/fzf.nix
-    ../modules/home/programs/eza.nix
-    ../modules/home/programs/direnv.nix
-
-    ../modules/home/packages/cli.nix
-    ../modules/home/packages/utils.nix
+    ../modules/home/cli
   ];
-
-  home = {
-    username = "yugin";
-    homeDirectory = "/home/yugin";
-    stateVersion = "25.11";
-  };
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
 }

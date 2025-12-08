@@ -1,8 +1,10 @@
-{ ... }:
 {
   imports = [
+    ../common
+
     ./hardware-configuration.nix
-    ../../modules/nixos
+
+    ../../modules/nixos/desktop
   ];
 
   nix.settings.experimental-features = [
@@ -11,6 +13,7 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  networking.hostName = "pc";
 
   system.stateVersion = "25.11";
 }

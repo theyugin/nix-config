@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ../base
+  ];
+
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -10,14 +14,9 @@
 
   networking = {
     networkmanager.enable = true;
-    hostName = "pc";
   };
 
-  time.timeZone = "Asia/Yekaterinburg";
-  i18n.defaultLocale = "en_US.UTF-8";
-
   users = {
-    defaultUserShell = pkgs.zsh;
     users.yugin = {
       isNormalUser = true;
       extraGroups = [
@@ -41,8 +40,6 @@
   };
 
   programs = {
-    zsh.enable = true;
-
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
@@ -58,31 +55,5 @@
     };
 
     waybar.enable = true;
-  };
-
-  environment = {
-    systemPackages = with pkgs; [
-      wget
-      git
-    ];
-  };
-
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      noto-fonts-color-emoji
-      nerd-fonts.iosevka-term
-    ];
-
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "Noto Serif" ];
-        sansSerif = [ "Noto Sans" ];
-        monospace = [ "IosevkaTerm NF" ];
-      };
-    };
   };
 }

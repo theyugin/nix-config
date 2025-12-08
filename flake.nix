@@ -1,5 +1,5 @@
 {
-  description = "yugin config";
+  description = "epic nix config";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -58,15 +58,14 @@
           modules = [
             stylix.nixosModules.stylix
 
-            ./hosts/common
-            ./hosts/nixos
+            ./hosts/pc
 
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.yugin = import ./home/nixos.nix;
+              home-manager.users.yugin = import ./home/pc/users/yugin.nix;
             }
           ];
         };
@@ -76,14 +75,14 @@
           modules = [
             nixos-wsl.nixosModules.wsl
 
-            ./hosts/wsl
+            ./hosts/pc-wsl
 
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.yugin = import ./home/wsl.nix;
+              home-manager.users.yugin = import ./home/pc-wsl.nix;
             }
           ];
         };
@@ -92,15 +91,8 @@
         "${system}" = {
           default =
             with pkgs;
-            let
-              nvim = nixvim.legacyPackages.x86_64-linux.makeNixvim {
-                plugins.lsp.enable = true;
-                colorschemes.gruvbox.enable = true;
-              };
-            in
             pkgs.mkShell {
               packages = [
-                nvim
                 just
                 nixfmt-rfc-style
                 nixfmt-tree

@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   imports = [
+    ../common
+
     ../../modules/wsl
-    ../../modules/nixos/locale.nix
-    ../../modules/nixos/users.nix
   ];
   time.timeZone = "Asia/Yekaterinburg";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -14,11 +14,10 @@
       isNormalUser = true;
       extraGroups = [
         "wheel"
-        "networkmanager"
       ];
     };
   };
-  networking.hostName = "pc";
+  networking.hostName = "pc-wsl";
 
   programs.zsh.enable = true;
 
@@ -39,5 +38,4 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  system.stateVersion = "25.11";
 }
