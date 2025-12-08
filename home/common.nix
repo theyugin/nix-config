@@ -1,23 +1,9 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
-  options.userConfig = {
-    userName = lib.mkOption {
-      type = lib.types.str;
-      description = "The username of the user.";
-    };
-    homeDirectory = lib.mkOption {
-      type = lib.types.str;
-      description = "The home directory of the user.";
-    };
-    gitUserName = lib.mkOption {
-      type = lib.types.str;
-      description = "The git user name.";
-    };
-    gitUserEmail = lib.mkOption {
-      type = lib.types.str;
-      description = "The git user email.";
-    };
-  };
+  imports = [
+    ./user-config.nix
+    ../modules/home/cli
+  ];
 
   config = {
     home = {
@@ -26,8 +12,4 @@
       stateVersion = "25.11";
     };
   };
-
-  imports = [
-    ../modules/home/cli
-  ];
 }
