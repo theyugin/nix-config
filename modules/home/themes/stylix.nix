@@ -23,7 +23,6 @@
         popups = 12;
       };
     };
-
     icons = {
       enable = true;
       dark = "Gruvbox-Plus-Dark";

@@ -18,6 +18,11 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,6 +31,7 @@
       home-manager,
       nixos-wsl,
       stylix,
+      nixvim,
       ...
     }:
     let
@@ -54,7 +60,7 @@
           ];
         };
 
-        nixos-wsl = nixpkgs.lib.nixosSystem {
+        pc-wsl = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             nixos-wsl.nixosModules.wsl
@@ -72,20 +78,22 @@
       };
       devShells = {
         "${system}" = {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
-              nixpkgs-fmt
-              nixd
-              just
-              direnv
-              (vscode-with-extensions.override {
-                vscodeExtensions = with vscode-extensions; [
-                  jnoortheen.nix-ide
-                  mkhl.direnv
-                ];
-              })
-            ];
-          };
+          default =
+            with pkgs;
+            let
+              nvim = nixvim.legacyPackages.x86_64-linux.makeNixvim {
+                plugins.lsp.enable = true;
+                colorschemes.gruvbox.enable = true;
+              };
+            in
+            pkgs.mkShell {
+              packages = [
+                nvim
+                just
+                nixfmt-rfc-style
+                nixfmt-tree
+              ];
+            };
         };
       };
     };

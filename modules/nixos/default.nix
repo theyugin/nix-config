@@ -33,7 +33,7 @@
     printing.enable = true;
     udisks2.enable = true;
     gvfs.enable = true;
-    
+
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -42,9 +42,7 @@
 
   programs = {
     zsh.enable = true;
-    
-    firefox.enable = true;
-    
+
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
@@ -52,13 +50,13 @@
         thunar-volman
       ];
     };
-    
+
     hyprland = {
       enable = true;
       withUWSM = true;
       xwayland.enable = true;
     };
-    
+
     waybar.enable = true;
   };
 

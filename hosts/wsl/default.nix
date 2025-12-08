@@ -18,7 +18,7 @@
       ];
     };
   };
-  networking.hostName = "nixos-wsl";
+  networking.hostName = "pc";
 
   programs.zsh.enable = true;
 
@@ -36,8 +36,8 @@
     "nix-command"
     "flakes"
   ];
-  
+
   nixpkgs.config.allowUnfree = true;
-  
+
   system.stateVersion = "25.11";
 }

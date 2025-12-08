@@ -2,9 +2,9 @@
 {
   home.packages = with pkgs; [
     foot
-    
+
     mako
-    
+
     xarchiver
     hyprshot
     swaybg

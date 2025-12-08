@@ -2,7 +2,7 @@
 {
   imports = [
     ./common.nix
-    
+
     ../modules/home/packages/wsl.nix
   ];
 
