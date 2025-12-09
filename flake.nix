@@ -41,7 +41,6 @@
       home-manager,
       nixos-wsl,
       stylix,
-      nixvim,
       ...
     }@inputs:
     let

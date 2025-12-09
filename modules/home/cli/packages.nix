@@ -9,6 +9,5 @@
     tree
     fd
     ripgrep
-    htop
   ];
 }

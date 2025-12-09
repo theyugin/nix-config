@@ -1,5 +1,6 @@
 {
   imports = [
+    ./btop.nix
     ./firefox.nix
     ./foot.nix
     ./gui.nix
@@ -8,5 +9,6 @@
     ./stylix.nix
     ./vscode.nix
     ./walker.nix
+    ./waybar.nix
   ];
 }
