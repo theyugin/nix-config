@@ -7,7 +7,6 @@
     ./hyprland.nix
     ./mako.nix
     ./stylix.nix
-    ./vscode.nix
     ./walker.nix
     ./waybar.nix
   ];

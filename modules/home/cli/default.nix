@@ -8,5 +8,6 @@
     ./fzf.nix
     ./git.nix
     ./zsh.nix
+    ./nixvim.nix
   ];
 }

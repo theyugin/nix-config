@@ -25,49 +25,55 @@ with config.lib.stylix.colors;
 
       "exec-once" = "${uwsm} app -- swaybg -c 282828";
 
-      general.gaps_in = "0";
-      general.gaps_out = "0";
-      general.border_size = "2";
-      general."col.active_border" = "rgb(${base0B})";
-      general."col.inactive_border" = "rgba(928374ff)";
-      general.resize_on_border = "false";
-      general.allow_tearing = "false";
-      general.layout = "dwindle";
+      general = {
+        gaps_in = "0";
+        gaps_out = "0";
+        border_size = "2";
+        "col.active_border" = "rgb(${base0B})";
+        "col.inactive_border" = "rgba(928374ff)";
+        resize_on_border = "false";
+        allow_tearing = "false";
+        layout = "dwindle";
+      };
 
-      decoration.rounding = "0";
-      decoration.rounding_power = "0";
-      decoration.active_opacity = "1.0";
-      decoration.inactive_opacity = "1.0";
-      decoration.shadow.enabled = "false";
-      decoration.blur.enabled = "false";
+      decoration = {
+        rounding = "0";
+        rounding_power = "0";
+        active_opacity = "1.0";
+        inactive_opacity = "1.0";
+        shadow.enabled = "false";
+        blur.enabled = "false";
+      };
 
-      animations.enabled = "yes, please :)";
-      animations.bezier = [
-        "easeOutQuint,   0.23, 1,    0.32, 1"
-        "easeInOutCubic, 0.65, 0.05, 0.36, 1"
-        "linear,         0,    0,    1,    1"
-        "almostLinear,   0.5,  0.5,  0.75, 1"
-        "quick,          0.15, 0,    0.1,  1"
-      ];
-      animations.animation = [
-        "global,        1,     10,    default"
-        "border,        1,     5.39,  easeOutQuint"
-        "windows,       1,     4.79,  easeOutQuint"
-        "windowsIn,     1,     4.1,   easeOutQuint, popin 87%"
-        "windowsOut,    1,     1.49,  linear,       popin 87%"
-        "fadeIn,        1,     1.73,  almostLinear"
-        "fadeOut,       1,     1.46,  almostLinear"
-        "fade,          1,     3.03,  quick"
-        "layers,        1,     3.81,  easeOutQuint"
-        "layersIn,      1,     4,     easeOutQuint, fade"
-        "layersOut,     1,     1.5,   linear,       fade"
-        "fadeLayersIn,  1,     1.79,  almostLinear"
-        "fadeLayersOut, 1,     1.39,  almostLinear"
-        "workspaces,    1,     1.94,  almostLinear, fade"
-        "workspacesIn,  1,     1.21,  almostLinear, fade"
-        "workspacesOut, 1,     1.94,  almostLinear, fade"
-        "zoomFactor,    1,     7,     quick"
-      ];
+      animations = {
+        enabled = "yes, please :)";
+        bezier = [
+          "easeOutQuint,   0.23, 1,    0.32, 1"
+          "easeInOutCubic, 0.65, 0.05, 0.36, 1"
+          "linear,         0,    0,    1,    1"
+          "almostLinear,   0.5,  0.5,  0.75, 1"
+          "quick,          0.15, 0,    0.1,  1"
+        ];
+        animation = [
+          "global,        1,     10,    default"
+          "border,        1,     5.39,  easeOutQuint"
+          "windows,       1,     4.79,  easeOutQuint"
+          "windowsIn,     1,     4.1,   easeOutQuint, popin 87%"
+          "windowsOut,    1,     1.49,  linear,       popin 87%"
+          "fadeIn,        1,     1.73,  almostLinear"
+          "fadeOut,       1,     1.46,  almostLinear"
+          "fade,          1,     3.03,  quick"
+          "layers,        1,     3.81,  easeOutQuint"
+          "layersIn,      1,     4,     easeOutQuint, fade"
+          "layersOut,     1,     1.5,   linear,       fade"
+          "fadeLayersIn,  1,     1.79,  almostLinear"
+          "fadeLayersOut, 1,     1.39,  almostLinear"
+          "workspaces,    1,     1.94,  almostLinear, fade"
+          "workspacesIn,  1,     1.21,  almostLinear, fade"
+          "workspacesOut, 1,     1.94,  almostLinear, fade"
+          "zoomFactor,    1,     7,     quick"
+        ];
+      };
 
       dwindle.pseudotile = "true";
       dwindle.preserve_split = "true";
@@ -77,14 +83,16 @@ with config.lib.stylix.colors;
       misc.force_default_wallpaper = "-1";
       misc.disable_hyprland_logo = "false";
 
-      input.kb_layout = "us,ru";
-      input.kb_variant = "";
-      input.kb_model = "";
-      input.kb_options = "grp:win_space_toggle";
-      input.kb_rules = "";
-      input.follow_mouse = "1";
-      input.sensitivity = "0";
-      input.touchpad.natural_scroll = "false";
+      input = {
+        kb_layout = "us,ru";
+        kb_variant = "";
+        kb_model = "";
+        kb_options = "grp:win_space_toggle";
+        kb_rules = "";
+        follow_mouse = "1";
+        sensitivity = "0";
+        touchpad.natural_scroll = "false";
+      };
 
       gesture = "3, horizontal, workspace";
 

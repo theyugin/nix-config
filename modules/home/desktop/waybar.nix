@@ -38,7 +38,7 @@ in
           format = "<span style=\"italic\">{}</span>";
         };
         "mpris" = {
-          format = "{dynamic}";
+          format = "{artist} - {title}";
           ignored-players = [ "firefox" ];
         };
 
