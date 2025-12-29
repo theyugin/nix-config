@@ -11,5 +11,6 @@
 
     spotify
     playerctl
+    transmission_4-gtk
   ];
 }

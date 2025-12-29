@@ -9,5 +9,6 @@
     ./git.nix
     ./zsh.nix
     ./nixvim.nix
+    ./tmux.nix
   ];
 }
