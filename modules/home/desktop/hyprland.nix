@@ -8,7 +8,7 @@ let
   inherit (lib) getExe;
   terminal = "${getExe pkgs.foot}";
   fileManager = "${getExe pkgs.xfce.thunar}";
-  menu = "${getExe pkgs.walker}";
+  menu = "${getExe pkgs.fuzzel}";
   uwsm = "${getExe pkgs.uwsm}";
   hyprshot = "${getExe pkgs.hyprshot}";
   playerctl = "${getExe pkgs.playerctl}";
