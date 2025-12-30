@@ -7,8 +7,9 @@
     ./eza.nix
     ./fzf.nix
     ./git.nix
-    ./zsh.nix
+    ./htop.nix
     ./nixvim.nix
     ./tmux.nix
+    ./zsh.nix
   ];
 }

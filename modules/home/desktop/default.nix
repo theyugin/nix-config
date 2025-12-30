@@ -1,6 +1,5 @@
 {
   imports = [
-    ./btop.nix
     ./firefox.nix
     ./foot.nix
     ./fuzzel.nix
