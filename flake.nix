@@ -58,7 +58,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.yugin = import ./home/pc/users/yugin.nix;
+              home-manager.users.${defaultUser.name} = import ./home/pc/users/yugin.nix;
             }
           ];
         };
