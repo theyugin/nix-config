@@ -10,6 +10,7 @@ let
   fileManager = "${getExe pkgs.xfce.thunar}";
   menu = "${getExe pkgs.fuzzel}";
   uwsm = "${getExe pkgs.uwsm}";
+  swaybg = "${getExe pkgs.swaybg}";
   hyprshot = "${getExe pkgs.hyprshot}";
   playerctl = "${getExe pkgs.playerctl}";
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
@@ -93,11 +94,6 @@ with config.lib.stylix.colors;
         sensitivity = "0";
         touchpad.natural_scroll = "false";
       };
-
-      gesture = "3, horizontal, workspace";
-
-      device.name = "epic-mouse-v1";
-      device.sensitivity = "-0.5";
 
       "$mainMod" = "SUPER";
 

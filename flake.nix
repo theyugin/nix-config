@@ -39,6 +39,10 @@
         inherit system;
         config.allowUnfree = true;
       };
+      defaultUser = {
+        name = "yugin";
+        email = "theyugin@gmail.com";
+      };
     in
     {
       nixosConfigurations = {

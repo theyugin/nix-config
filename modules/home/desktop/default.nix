@@ -9,5 +9,6 @@
     ./mpv.nix
     ./stylix.nix
     ./waybar.nix
+    ./zed.nix
   ];
 }

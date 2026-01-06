@@ -28,7 +28,6 @@
 
   services = {
     xserver.enable = true;
-    displayManager.sddm.enable = true;
     printing.enable = true;
     udisks2.enable = true;
     gvfs.enable = true;
@@ -37,6 +36,20 @@
       enable = true;
       pulse.enable = true;
       alsa.enable = true;
+    };
+
+    greetd = {
+      enable = true;
+      settings = {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland";
+          user = "yugin";
+        };
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --cmd ${pkgs.hyprland}/bin/Hyprland";
+          user = "greeter";
+        };
+      };
     };
   };
 
@@ -51,10 +64,7 @@
 
     hyprland = {
       enable = true;
-      withUWSM = true;
       xwayland.enable = true;
     };
-
-    waybar.enable = true;
   };
 }
