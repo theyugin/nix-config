@@ -27,6 +27,7 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
       nixos-wsl,
@@ -45,6 +46,10 @@
       };
     in
     {
+      overlays = {
+        solaar = import ./overlays/solaar.nix;
+      };
+
       nixosConfigurations = {
         pc = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -52,6 +57,13 @@
             stylix.nixosModules.stylix
 
             ./hosts/pc
+
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [ self.overlays.solaar ];
+              }
+            )
 
             home-manager.nixosModules.home-manager
             {

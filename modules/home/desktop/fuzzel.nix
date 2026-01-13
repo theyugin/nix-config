@@ -1,6 +1,11 @@
-{ lib, pkgs, config, ...}:
 {
-  programs.fuzzel = { 
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
+  programs.fuzzel = {
     enable = true;
     settings = lib.mkAfter {
       main = {

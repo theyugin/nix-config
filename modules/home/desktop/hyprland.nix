@@ -9,14 +9,18 @@ let
   terminal = "${getExe pkgs.foot}";
   fileManager = "${getExe pkgs.xfce.thunar}";
   menu = "${getExe pkgs.fuzzel}";
-  uwsm = "${getExe pkgs.uwsm}";
-  swaybg = "${getExe pkgs.swaybg}";
-  hyprshot = "${getExe pkgs.hyprshot}";
-  playerctl = "${getExe pkgs.playerctl}";
-  wpctl = "${pkgs.wireplumber}/bin/wpctl";
+  swaybgExe = "${getExe pkgs.swaybg}";
+  hyprshotExe = "${getExe pkgs.hyprshot}";
+  playerctlExe = "${getExe pkgs.playerctl}";
+  solaarExe = "${getExe pkgs.solaar}";
+  wpctlExe = "${pkgs.wireplumber}/bin/wpctl";
 in
 with config.lib.stylix.colors;
 {
+  home.packages = with pkgs; [
+    hyprshot
+    swaybg
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
@@ -24,7 +28,10 @@ with config.lib.stylix.colors;
     settings = {
       monitor = ",highrr,auto,auto";
 
-      "exec-once" = "${uwsm} app -- swaybg -c 282828";
+      exec-once = [
+        "${swaybgExe} -c 282828"
+        "${solaarExe} -w hide"
+      ];
 
       general = {
         gaps_in = "0";
@@ -104,7 +111,7 @@ with config.lib.stylix.colors;
         "$mainMod, E, exec, ${fileManager}"
         "$mainMod, V, togglefloating,"
         "$mainMod, D, exec, ${menu}"
-        "$mainMod SHIFT, S, exec, ${hyprshot} --clipboard-only -zm region"
+        "$mainMod SHIFT, S, exec, ${hyprshotExe} --clipboard-only -zm region"
         "$mainMod CONTROL, right, workspace, e+1"
         "$mainMod CONTROL, left, workspace, e-1"
         "$mainMod, L, movefocus, r"
@@ -143,19 +150,19 @@ with config.lib.stylix.colors;
       ];
 
       bindel = [
-        ",XF86AudioRaiseVolume, exec, ${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-        ",XF86AudioLowerVolume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86AudioMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ",XF86AudioMicMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ",XF86AudioRaiseVolume, exec, ${wpctlExe} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+        ",XF86AudioLowerVolume, exec, ${wpctlExe} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",XF86AudioMute, exec, ${wpctlExe} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ",XF86AudioMicMute, exec, ${wpctlExe} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
         ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
       ];
 
       bindl = [
-        ", XF86AudioNext, exec, ${playerctl} next"
-        ", XF86AudioPause, exec, ${playerctl} play-pause"
-        ", XF86AudioPlay, exec, ${playerctl} play-pause"
-        ", XF86AudioPrev, exec, ${playerctl} previous"
+        ", XF86AudioNext, exec, ${playerctlExe} next"
+        ", XF86AudioPause, exec, ${playerctlExe} play-pause"
+        ", XF86AudioPlay, exec, ${playerctlExe} play-pause"
+        ", XF86AudioPrev, exec, ${playerctlExe} previous"
       ];
 
       windowrule = [
