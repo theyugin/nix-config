@@ -20,6 +20,8 @@ with config.lib.stylix.colors;
   home.packages = with pkgs; [
     hyprshot
     swaybg
+    wl-clipboard
+    playerctl
   ];
   wayland.windowManager.hyprland = {
     enable = true;
