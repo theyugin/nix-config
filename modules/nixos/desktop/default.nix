@@ -42,11 +42,11 @@
       enable = true;
       settings = {
         initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland";
+          command = "${pkgs.hyprland}/bin/start-hyprland";
           user = "yugin";
         };
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --cmd ${pkgs.hyprland}/bin/Hyprland";
+          command = "${pkgs.tuigreet}/bin/tuigreet --cmd ${pkgs.hyprland}/bin/start-hyprland";
           user = "greeter";
         };
       };
